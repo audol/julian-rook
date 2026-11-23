@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>왕관 없는 지배자들 — 율리안 룩 · VELKART 1934</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Cormorant+SC:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#0b0c0f;--ink2:#121418;--ink3:#181a1f;--line:#2a2c31;
+  --brass:#c9a24a;--brass2:#8f6f2a;--brass3:#5c4a22;
+  --rust:#9a3f2b;--fog:#aeb8bc;--paper:#e8e1d0;--cream:#f1ead6;--text:#d9d2bf;
+  --serif:'Noto Serif KR','Nanum Myeongjo','Batang',serif;
+  --sc:'Cormorant SC','Cormorant Garamond',Georgia,serif;
+  --it:'Cormorant Garamond',Georgia,serif;
+  color-scheme:dark
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font-family:var(--serif);line-height:1.9;font-size:15px;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--brass);color:var(--ink)}
+.fog{position:fixed;inset:-10%;pointer-events:none;z-index:0;background:
+  radial-gradient(ellipse 60% 35% at 20% 85%,rgba(174,184,188,.10),transparent 70%),
+  radial-gradient(ellipse 55% 30% at 80% 25%,rgba(174,184,188,.07),transparent 70%);
+  animation:drift 30s ease-in-out infinite alternate}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@keyframes drift{to{transform:translate3d(-4%,2%,0) scale(1.08)}}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:center;gap:2px;padding:10px 12px;
+  background:linear-gradient(var(--ink) 30%,rgba(11,12,15,0));font-family:var(--sc);font-size:12px;letter-spacing:.22em;
+  transform:translateY(-100%);transition:transform .4s}
+.nav.on{transform:none}
+.nav a{color:var(--brass2);text-decoration:none;padding:4px 10px;border:1px solid transparent;transition:.2s}
+.nav a:hover,.nav a.cur{color:var(--brass);border-color:var(--brass3)}
+
+main{position:relative;z-index:1;max-width:1040px;margin:0 auto;padding:0 24px 80px}
+.narrow{max-width:760px;margin-left:auto;margin-right:auto}
+
+/* hero */
+.hero{text-align:center;padding:110px 10px 80px;position:relative;min-height:92vh;display:flex;flex-direction:column;justify-content:center}
+.hero:before{content:"";position:absolute;left:50%;top:6%;width:min(680px,100%);height:340px;transform:translateX(-50%);
+  background:repeating-conic-gradient(from 270deg at 50% 100%,rgba(201,162,74,.22) 0 3deg,transparent 3deg 9deg);
+  -webkit-mask:radial-gradient(ellipse at 50% 100%,#000 8%,transparent 70%);mask:radial-gradient(ellipse at 50% 100%,#000 8%,transparent 70%)}
+.tag{position:relative;letter-spacing:.5em;font-size:12px;color:var(--brass);font-family:var(--sc)}
+.hero h1{position:relative;font-size:clamp(38px,8.4vw,74px);font-weight:900;letter-spacing:.12em;margin:26px 0 8px;color:var(--cream);text-shadow:0 0 40px rgba(201,162,74,.3);line-height:1.25}
+.hero .en{position:relative;font-family:var(--sc);letter-spacing:.6em;font-size:clamp(12px,2.6vw,17px);color:var(--brass)}
+.deco{display:flex;align-items:center;gap:14px;justify-content:center;margin:36px 0 20px;color:var(--brass)}
+.deco i{display:block;height:1px;width:100px;background:linear-gradient(90deg,transparent,var(--brass))}
+.deco i:last-child{transform:scaleX(-1)}
+.deco b{width:9px;height:9px;transform:rotate(45deg);border:1px solid var(--brass);display:block}
+.epi{position:relative;color:var(--fog);font-style:italic;font-size:16px}
+.hero .meta{position:relative;margin-top:46px;display:flex;justify-content:center;gap:0;flex-wrap:wrap;font-size:12px;color:var(--fog);letter-spacing:.08em}
+.hero .meta span{padding:0 16px;border-left:1px solid var(--brass3)}
+.hero .meta span:first-child{border:0}
+.hero .meta em{font-style:normal;color:var(--brass);font-family:var(--sc);letter-spacing:.3em;margin-right:8px;font-size:11px}
+.scroll{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);font-family:var(--sc);font-size:10px;letter-spacing:.5em;color:var(--brass2)}
+.scroll:after{content:"";display:block;width:1px;height:34px;margin:8px auto 0;background:linear-gradient(var(--brass2),transparent);animation:sc 2.4s ease-in-out infinite}
+@keyframes sc{0%,100%{transform:scaleY(.4);transform-origin:top}50%{transform:scaleY(1)}}
+
+/* chapter header */
+.chap{margin:110px 0 34px;display:grid;grid-template-columns:auto 1fr;gap:0 26px;align-items:end}
+.chap .num{grid-row:1/3;font-family:var(--sc);font-size:clamp(64px,10vw,104px);line-height:.8;color:transparent;-webkit-text-stroke:1px var(--brass2)}
+.chap small{font-family:var(--sc);font-size:12px;letter-spacing:.45em;color:var(--brass2)}
+.chap h2{font-size:clamp(22px,3.4vw,30px);letter-spacing:.16em;color:var(--brass);font-weight:700;line-height:1.4}
+.rule{height:7px;border-top:1px solid var(--brass2);border-bottom:1px solid var(--brass2);margin:0 0 30px;opacity:.6}
+h4.sub{font-size:17px;letter-spacing:.14em;color:var(--brass);margin:52px 0 14px;font-weight:700;display:flex;align-items:baseline;gap:14px}
+h4.sub small{font-family:var(--sc);font-size:11px;letter-spacing:.4em;color:var(--brass2);font-weight:500}
+h4.sub:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--brass3),transparent)}
+
+p{margin-bottom:14px;color:var(--text);text-wrap:pretty}
+.quote{border-left:2px solid var(--rust);padding:8px 20px;margin:26px 0;color:var(--cream);font-size:18px;background:linear-gradient(90deg,rgba(154,63,43,.14),transparent)}
+
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card{position:relative;background:linear-gradient(160deg,var(--ink2),#0e0f12);border:1px solid var(--line);padding:24px 22px 20px;overflow:hidden;transition:border-color .3s}
+.card:before{content:"";position:absolute;inset:6px;border:1px solid rgba(201,162,74,.18);pointer-events:none;transition:border-color .3s}
+.card:hover{border-color:var(--brass3)}
+.card:hover:before{border-color:rgba(201,162,74,.38)}
+.card .no{font-family:var(--sc);font-size:46px;line-height:1;color:rgba(201,162,74,.2);position:absolute;right:16px;top:10px}
+.card h3{font-size:18px;color:var(--cream);letter-spacing:.06em}
+.card .en{font-family:var(--sc);font-size:11px;letter-spacing:.35em;color:var(--brass);margin:2px 0 8px}
+.card .kw{font-size:12px;color:var(--fog);margin-bottom:8px}
+.card p{font-size:13.5px;line-height:1.8;margin:0}
+.card.main{grid-column:1/-1;border-color:var(--brass2);background:linear-gradient(160deg,#1a1713,#0e0f12)}
+.badge{display:inline-block;font-family:var(--sc);font-size:11px;letter-spacing:.3em;color:var(--ink);background:var(--brass);padding:1px 10px;margin-bottom:10px}
+
+/* dock map */
+.dock{position:relative;border:1px solid var(--line);background:var(--ink2);padding:26px 22px 22px;margin:8px 0 6px}
+.dock .lbl{font-family:var(--sc);font-size:11px;letter-spacing:.35em;color:var(--brass2);display:flex;justify-content:space-between;margin-bottom:10px}
+.piers{display:grid;grid-template-columns:repeat(20,1fr);gap:4px;align-items:end}
+.pier{height:46px;border:1px solid #33363c;border-bottom:0;position:relative;display:flex;align-items:flex-start;justify-content:center;font-family:var(--sc);font-size:11px;color:#6d7276;padding-top:4px}
+.pier.hi{border-color:var(--brass);color:var(--brass);background:linear-gradient(rgba(201,162,74,.14),transparent);height:62px}
+.water{height:28px;margin-top:0;border-top:1px solid var(--fog);background:repeating-linear-gradient(90deg,rgba(174,184,188,.18) 0 10px,transparent 10px 22px);opacity:.55;background-size:22px 1px;background-repeat:repeat-x;background-position:0 10px}
+.alley{display:grid;grid-template-columns:repeat(20,1fr);gap:4px;margin-bottom:6px}
+.alley div{height:18px;border:1px dashed #2c2f34}
+.alley .wh{border:1px solid var(--rust);background:rgba(154,63,43,.18)}
+.dock .legend{display:flex;gap:22px;flex-wrap:wrap;margin-top:14px;font-size:12px;color:var(--fog)}
+.dock .legend i{display:inline-block;width:10px;height:10px;margin-right:7px;vertical-align:-1px}
+
+.fogmonth{margin:4px 0 0;padding:24px;border:1px solid var(--rust);background:rgba(154,63,43,.08);text-align:center;color:var(--cream)}
+.fogmonth small{display:block;font-family:var(--sc);letter-spacing:.4em;font-size:11px;color:var(--rust);margin-bottom:6px}
+
+ul.list{list-style:none}
+ul.list li{padding:10px 0 10px 24px;border-bottom:1px dashed #2c2e33;position:relative;font-size:14px}
+ul.list li:before{content:"";position:absolute;left:2px;top:19px;width:6px;height:6px;transform:rotate(45deg);background:var(--brass)}
+ul.list b{color:var(--cream)}
+
+table.slang{width:100%;border-collapse:collapse;font-size:14px}
+table.slang th,table.slang td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line)}
+table.slang th{color:var(--brass);font-weight:600;width:34%;white-space:nowrap}
+table.slang tr:last-child th{color:var(--rust)}
+
+/* prologue — notice letter */
+.prologue p{font-size:15.5px;line-height:2.05}
+.prologue p:first-of-type:first-letter{float:left;font-size:58px;line-height:.9;padding:8px 10px 0 0;color:var(--brass);font-weight:900}
+.notice{margin:40px auto;max-width:520px;background:#e4dcc6;color:#2a241a;padding:34px 34px 30px;position:relative;transform:rotate(-1.2deg);box-shadow:0 30px 60px rgba(0,0,0,.55);font-size:14px}
+.notice:before{content:"";position:absolute;inset:10px;border:1px solid rgba(60,45,20,.35);pointer-events:none}
+.notice .hd{font-family:var(--sc);letter-spacing:.35em;font-size:12px;color:#6b5328;text-align:center;border-bottom:1px solid rgba(60,45,20,.35);padding-bottom:10px;margin-bottom:16px}
+.notice p{color:#3a3124;margin-bottom:10px;font-size:13.5px}
+.notice .hand{font-family:var(--it);font-style:italic;font-size:22px;color:#1d1810;text-align:center;margin:22px 0 4px;line-height:1.6}
+.notice .hand span{font-family:var(--serif);font-style:normal;font-size:16px;font-weight:500}
+.notice .key{position:absolute;right:-14px;bottom:-16px;width:64px;height:64px;border-radius:50%;border:2px solid var(--rust);display:grid;place-items:center;font-family:var(--sc);font-size:11px;letter-spacing:.15em;color:var(--rust);transform:rotate(14deg);background:rgba(228,220,198,.6)}
+.proverb{text-align:center;margin:34px 0;color:var(--cream);font-size:17px}
+.proverb small{display:block;font-family:var(--sc);letter-spacing:.4em;font-size:11px;color:var(--brass2);margin-bottom:6px}
+
+/* dossier */
+.dossier{display:grid;grid-template-columns:340px 1fr;gap:40px;align-items:start}
+.portrait{position:sticky;top:70px}
+.frame{position:relative;padding:10px;border:1px solid var(--brass2);background:var(--ink2)}
+.frame:before,.frame:after{content:"";position:absolute;width:18px;height:18px;border:1px solid var(--brass)}
+.frame:before{top:-5px;left:-5px;border-right:0;border-bottom:0}
+.frame:after{bottom:-5px;right:-5px;border-left:0;border-top:0}
+.frame image-slot{display:block;width:100%;aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#15171b 0 12px,#121418 12px 24px)}
+.caption{text-align:center;margin-top:16px}
+.caption .nm{font-size:30px;font-weight:900;letter-spacing:.14em;color:var(--cream);line-height:1.3}
+.caption .ennm{font-family:var(--sc);letter-spacing:.5em;font-size:13px;color:var(--brass)}
+.caption .alias{margin-top:10px;font-size:12px;color:var(--fog)}
+.caption .alias b{color:var(--brass);font-weight:500}
+.motto{margin-top:22px;border-top:1px solid var(--brass3);border-bottom:1px solid var(--brass3);padding:14px 0;text-align:center}
+.motto small{font-family:var(--sc);letter-spacing:.4em;font-size:10px;color:var(--brass2);display:block}
+.motto q{quotes:none;font-size:20px;color:var(--cream);letter-spacing:.1em}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);margin-bottom:28px}
+.stats div{padding:14px 14px 12px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats div:nth-child(4n){border-right:0}
+.stats div:nth-last-child(-n+4){border-bottom:0}
+.stats small{display:block;font-family:var(--sc);letter-spacing:.3em;font-size:10px;color:var(--brass2);line-height:1.5}
+.stats b{font-weight:500;color:var(--cream);font-size:15px;line-height:1.5;display:block}
+.stats b i{font-style:normal;font-size:12px;color:var(--fog)}
+.stats .wide{grid-column:span 2}
+
+.field{display:grid;grid-template-columns:110px 1fr;gap:18px;padding:16px 0;border-bottom:1px dashed #2c2e33}
+.field>small{font-family:var(--sc);letter-spacing:.2em;font-size:12px;color:var(--brass);padding-top:3px;line-height:1.5}
+.field>small span{display:block;font-family:var(--serif);letter-spacing:.1em;font-size:14px;color:var(--cream);font-weight:500}
+.field p{margin:0;font-size:14.5px}
+.field .say{display:block;margin-top:8px;color:var(--cream);font-style:italic;font-family:var(--serif)}
+
+/* tastes */
+.tastes{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--brass3);border-left:1px solid var(--line)}
+.taste{padding:18px 20px 16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.taste small{font-family:var(--sc);letter-spacing:.3em;font-size:10px;color:var(--brass2);display:block}
+.taste h5{font-size:14px;color:var(--brass);font-weight:700;letter-spacing:.08em;margin-bottom:6px}
+.taste p{font-size:13.5px;line-height:1.75;margin:0}
+.taste.q p{color:var(--cream);font-size:15px;font-style:italic}
+.taste.span2{grid-column:span 2}
+
+/* appearance */
+.palette{display:flex;gap:28px;flex-wrap:wrap;margin:6px 0 34px;padding:22px;border:1px solid var(--line);background:var(--ink2)}
+.sw{display:flex;align-items:center;gap:12px}
+.sw .c{width:46px;height:46px;border-radius:50%;border:1px solid #3a3d43;flex:none}
+.sw small{font-family:var(--sc);letter-spacing:.25em;font-size:10px;color:var(--brass2);display:block;line-height:1.4}
+.sw b{font-weight:500;color:var(--cream);font-size:13px}
+.c.hair{background:linear-gradient(180deg,#c8ad82 0 48%,#7d3a22 52% 100%)}
+.c.eye{background:radial-gradient(circle at 50% 50%,#0b0c0f 0 18%,#b88a3a 19% 24%,#8a9aa3 25% 100%);position:relative;overflow:hidden}
+.c.eye:after{content:"";position:absolute;inset:0;background:conic-gradient(from 100deg,transparent 0 10deg,rgba(201,162,74,.85) 10deg 40deg,transparent 40deg)}
+.c.skin{background:linear-gradient(90deg,#a47a58 0 50%,#e3d6c6 50%)}
+.c.brass{background:#b8913f}
+.c.fogc{background:#6e7f8a}
+
+.look{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+.look .field{grid-template-columns:96px 1fr}
+
+/* records */
+.timeline{position:relative;padding-left:34px;margin-top:6px}
+.timeline:before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:1px;background:linear-gradient(var(--brass),var(--brass3),transparent)}
+.ev{position:relative;padding:0 0 26px}
+.ev:before{content:"";position:absolute;left:-30px;top:9px;width:9px;height:9px;transform:rotate(45deg);background:var(--ink);border:1px solid var(--brass)}
+.ev .yr{font-family:var(--sc);font-size:20px;color:var(--brass);letter-spacing:.12em;line-height:1.4}
+.ev h5{font-size:15px;color:var(--cream);letter-spacing:.06em;margin-bottom:4px}
+.ev p{font-size:14px;margin:0}
+.ev.now:before{background:var(--rust);border-color:var(--rust);box-shadow:0 0 0 4px rgba(154,63,43,.25)}
+.ev.now .yr{color:var(--rust)}
+.rel{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
+
+/* opening scene */
+.scene{position:relative;padding:44px 48px;border:1px solid var(--line);background:linear-gradient(170deg,#141210,#0d0e11);overflow:hidden}
+.scene:before{content:"";position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;background:radial-gradient(rgba(214,140,60,.16),transparent 70%);pointer-events:none}
+.scene .loc{font-family:var(--sc);letter-spacing:.4em;font-size:11px;color:var(--brass2);margin-bottom:20px}
+.scene p{font-size:15px;line-height:2}
+.scene .d{color:var(--cream);font-size:16px;padding-left:16px;border-left:1px solid var(--brass2);margin:18px 0}
+.scene .choice{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.scene .choice span{border:1px solid var(--brass2);padding:8px 18px;font-size:13px;color:var(--brass);letter-spacing:.06em;transition:.25s;cursor:default}
+.scene .choice span:hover{background:var(--brass);color:var(--ink)}
+.blank{color:var(--brass);border-bottom:1px dotted var(--brass2);padding:0 2px}
+
+/* persona */
+.persona{display:grid;grid-template-columns:200px 1fr;gap:30px;border:1px solid var(--line);padding:26px;background:var(--ink2)}
+.persona image-slot{display:block;width:100%;aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#15171b 0 12px,#121418 12px 24px);border:1px solid var(--brass3)}
+.persona .field{grid-template-columns:90px 1fr;padding:11px 0}
+.persona .field:last-child{border:0}
+.note{font-size:12px;color:var(--fog);margin-top:10px;text-align:right}
+
+.teaser{margin-top:120px;text-align:center;padding:50px 20px;border-top:1px solid var(--brass2);border-bottom:1px solid var(--brass2);position:relative}
+.teaser small{font-family:var(--sc);letter-spacing:.45em;font-size:11px;color:var(--brass)}
+.teaser q{display:block;font-size:clamp(18px,4.4vw,27px);color:var(--cream);margin:18px 0 12px;line-height:1.7;quotes:none}
+.teaser span{color:var(--fog);font-size:13px;letter-spacing:.2em}
+.tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:30px}
+.tags span{font-size:12px;color:var(--brass2);border:1px solid var(--brass3);padding:2px 10px;letter-spacing:.04em}
+footer{text-align:center;margin-top:56px;color:var(--brass2);font-family:var(--sc);letter-spacing:.45em;font-size:12px}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:860px){
+  .dossier{grid-template-columns:1fr}
+  .portrait{position:static;max-width:340px;margin:0 auto}
+  .tastes{grid-template-columns:1fr 1fr}
+  .look,.rel{grid-template-columns:1fr}
+  .persona{grid-template-columns:1fr}
+  .persona image-slot{max-width:200px}
+  .nav{display:none}
+}
+@media(max-width:560px){
+  main{padding:0 16px 60px}
+  .stats{grid-template-columns:1fr 1fr}
+  .stats div{border-right:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important}
+  .stats div:nth-child(2n){border-right:0!important}
+  .stats .wide{grid-column:span 2}
+  .tastes{grid-template-columns:1fr}
+  .taste.span2{grid-column:auto}
+  .field,.look .field,.persona .field{grid-template-columns:1fr;gap:4px}
+  .scene{padding:30px 22px}
+  .piers,.alley{gap:2px}
+  .pier{font-size:8px;height:38px}
+  .pier.hi{height:50px}
+  table.slang th{white-space:normal}
+  .chap{gap:0 16px}
+}
+
+/* Standalone image placeholders */
+image-slot{position:relative;display:grid;place-items:center;min-height:220px;color:var(--brass2);font-size:12px;letter-spacing:.08em;text-align:center;padding:18px}
+image-slot:after{content:attr(placeholder);max-width:90%;line-height:1.7}
+
+</style>
+</head>
+<body>
+<div class="fog"></div>
+<div class="grain"></div>
+
+<nav class="nav" id="nav">
+  <a href="#city">City</a><a href="#dock">Dock</a><a href="#prologue">Prologue</a><a href="#rook">Rook</a><a href="#tastes">Tastes</a><a href="#look">Look</a><a href="#record">Record</a><a href="#meet">Meet</a>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="tag">VELKART · 1934 · GANGSTER NOIR</div>
+  <h1>왕관 없는 지배자들</h1>
+  <div class="en">CROWNLESS KINGS</div>
+  <div class="deco"><i></i><b></b><i></i></div>
+  <p class="epi">“왕관은 없어도, 이 도시에는 왕이 있다.”</p>
+  <div class="meta">
+    <span><em>Era</em>1934년 11월 말 · 안개철</span>
+    <span><em>Stage</em>블랙워터 독 14번 창고</span>
+    <span><em>Character</em>율리안 룩</span>
+  </div>
+  <div class="scroll">SCROLL</div>
+</section>
+
+<!-- I CITY -->
+<section id="city" class="narrow">
+  <header class="chap reveal"><span class="num">Ⅰ</span><small>CITY RECORD</small><h2>도시 벨카르트</h2></header>
+  <div class="rule"></div>
+  <div class="reveal">
+  <p>1930년대, 산업과 무역으로 번영을 이룬 도시 벨카르트(Velkart). 철강과 방직, 철도를 중심으로 성장해 한때 수많은 노동자와 상인이 부를 찾아 모여드는 기회의 도시였다. 번화가에는 은행과 백화점, 호화로운 호텔이 서 있고, 강 건너 노동자 구역에는 공장과 허름한 술집이 밀집해 있다. 도시의 부를 누가 가져가는지는 법률이 아니라 힘이 결정했다.</p>
+  <p>그러나 전성기가 지나고 세계적인 불황이 닥치자 공장이 문을 닫고 실업자가 거리로 내몰렸다. 혼란을 틈타 범죄 조직은 오히려 세력을 키웠다. 밀주, 도박, 사채, 운송업과 유흥업. 그들은 막대한 부를 쌓으며 합법적인 산업과 정치권까지 영향력을 넓혔다.</p>
+  <div class="quote">이 도시를 실질적으로 움직이는 것은 시장도, 경찰도 아니다.</div>
+  <p>오래도록 이권을 나누어 가진 범죄 가문과 신흥 조직들은 때로는 사업가의 얼굴로, 때로는 자선가의 이름으로 도시 곳곳에 뿌리를 내렸다. 서로의 영역을 침범하지 않는다는 암묵적 질서 아래 유지되던 평화는 불황과 새로운 세력의 등장으로 흔들리기 시작한다. 누군가는 가문의 이름을 지키려 하고, 누군가는 제 몫의 권력을 요구하며, 누군가는 낡은 질서 자체를 무너뜨리려 한다.</p>
+  <p>이곳에서는 혈통도, 돈도, 충성도 영원한 권력을 보장하지 못한다. 왕관 없는 왕들의 도시, 벨카르트. 그다음 주인이 누가 될지는 아직 아무도 모른다.</p>
+  </div>
+</section>
+
+<!-- II DISTRICTS -->
+<section>
+  <header class="chap reveal"><span class="num">Ⅱ</span><small>SIX DISTRICTS</small><h2>도시의 여섯 구역</h2></header>
+  <div class="rule"></div>
+  <div class="grid reveal">
+    <div class="card"><span class="no">01</span><h3>아이언워드</h3><div class="en">IRONWARD</div><div class="kw">철과 연기 · 노동 · 계급</div><p>벨카르트의 심장부인 공업 지구. 제철소와 방직 공장, 노동자 주택이 빽빽하고 검은 연기와 기계음이 멈추지 않는다. 빈부격차와 노동 문제가 가장 적나라한 곳이며, 신흥 조직이 세력을 넓히기 좋은 땅으로 꼽힌다.</p></div>
+    <div class="card"><span class="no">02</span><h3>레드라인</h3><div class="en">REDLINE</div><div class="kw">철도 · 운송 · 밀수</div><p>도시 전역의 물자와 돈이 지나가는 교통의 핵심. 중앙역과 화물 창고, 정비소가 밀집해 있고 낮에는 상인으로 붐비다 밤이면 은밀한 거래가 오간다. 여러 조직이 물류권을 두고 서로를 견제한다.</p></div>
+    <div class="card"><span class="no">03</span><h3>골든마일</h3><div class="en">GOLDEN MILE</div><div class="kw">카지노 · 사교 · 거래</div><p>카지노와 카바레, 경마장, 고급 주점이 늘어선 최고의 번화가. 정치인과 사업가, 조직원, 예술가, 도박꾼이 한자리에 모이고, 웃음과 음악 뒤편에서는 언제나 다른 계산이 이루어진다.</p></div>
+    <div class="card"><span class="no">04</span><h3>크라운힐</h3><div class="en">CROWNHILL</div><div class="kw">상류사회 · 자본 · 권력</div><p>언덕 위 명문가와 정치인, 자산가들의 구역. 겉보기엔 가장 질서 있고 우아하지만 그 평온은 돈과 연줄, 보이지 않는 폭력 위에 서 있다. 손을 더럽히지 않고 뒤에서 자금을 움직이는 이들의 땅이다.</p></div>
+    <div class="card"><span class="no">05</span><h3>로어타운</h3><div class="en">LOWERTOWN</div><div class="kw">구시가지 · 서민 · 의리</div><p>공업도시가 되기 전부터 있던 오래된 시가지. 전통 시장과 좁은 골목이 얽혀 있고 소문이 가장 빨리 퍼지며 오래된 인맥과 의리가 남아 있다. 이곳을 기반으로 자기만의 세력을 만드는 이도 있다.</p></div>
+    <div class="card main"><span class="badge">THIS STORY'S STAGE</span><span class="no">06</span><h3>블랙워터 독</h3><div class="en">BLACKWATER DOCK</div><div class="kw">항만 · 무역 · 밀수</div><p>무역과 밀수의 중심이 되는 강변 부두. 선창과 창고, 하역장, 작은 선술집과 여관이 이어지고 외부에서 들어오는 사람과 물자가 가장 먼저 닿는다. 낮에는 합법적인 하역이, 밤에는 정체 모를 상자와 이름 없는 거래가 오간다. 레드라인이 내부 유통의 심장이라면, 블랙워터 독은 외부 세계와 맞닿은 벨카르트의 어두운 입구다.</p></div>
+  </div>
+</section>
+
+<!-- III DOCK -->
+<section id="dock">
+  <header class="chap reveal"><span class="num">Ⅲ</span><small>BLACKWATER DOCK</small><h2>안개 속의 부두</h2></header>
+  <div class="rule"></div>
+  <div class="fogmonth reveal"><small>NOVEMBER · FOG SEASON</small>1934년 11월 말. 강에서 올라온 안개가 사흘 이상 걷히지 않으면 세관 감시선이 묶인다.<br>그래서 부두 사람들은 이 계절을 <b>‘대목’</b>이라 부른다.</div>
+
+  <h4 class="sub reveal">부두의 지도<small>LAYOUT</small></h4>
+  <div class="dock reveal">
+    <div class="lbl"><span>← 상류 · 도심</span><span>WAREHOUSE ALLEY</span><span>하류 · 외해 →</span></div>
+    <div class="alley" id="alley"></div>
+    <div class="piers" id="piers"></div>
+    <div class="water"></div>
+    <div class="legend">
+      <span><i style="border:1px solid var(--brass);background:rgba(201,162,74,.2)"></i>6번 선창 · 세관 초소</span>
+      <span><i style="border:1px solid var(--rust);background:rgba(154,63,43,.3)"></i>14번 창고</span>
+      <span><i style="border:1px solid var(--fog);opacity:.6"></i>강 하구</span>
+    </div>
+  </div>
+  <ul class="list reveal">
+    <li><b>1~20번 선창</b> — 번호가 클수록 하류, 곧 외해에서 온 배가 먼저 닿는 쪽이다.</li>
+    <li><b>6번 선창</b> — 합법 하역의 중심. 세관 초소와 항만청 출장소가 자리한다.</li>
+    <li><b>14번 창고</b> — 선창 뒤 ‘창고 골목’의 낡은 개인 창고. 지붕이 높고 지하 배수실이 딸려 있다.</li>
+    <li><b>선술집 ‘녹슨 닻’</b> — 부두 사람들의 사랑방. 소문과 외상이 가장 빨리 도는 곳.</li>
+    <li><b>새벽 장</b> — 새벽 4시부터 6시까지 선창 끝에 서는 시장. 생선과 중고 옷, 출처 모를 담배가 거래된다.</li>
+    <li><b>세관 감시선 ‘갈매기호’</b> — 밤마다 강 하구를 훑지만 안개철에는 거의 뜨지 못한다.</li>
+  </ul>
+
+  <div class="grid" style="grid-template-columns:1fr 1fr;gap:40px">
+    <div class="reveal">
+      <h4 class="sub">부두의 규칙<small>RULES</small></h4>
+      <ul class="list">
+        <li>조수표가 곧 시간표다. 하역은 썰물 세 시간 전부터 밀물 직전까지의 <b>‘물때’</b>에 이루어진다.</li>
+        <li>부두에서 친절은 거저 주어지지 않는다. 받은 만큼 갚아야 하고, 갚지 못하면 외상이 쌓인다.</li>
+        <li>남의 화물 상자는 열어보지 않는 것이 예의다.</li>
+      </ul>
+    </div>
+    <div class="reveal">
+      <h4 class="sub">부두 은어<small>SLANG</small></h4>
+      <table class="slang">
+        <tr><th>소금</th><td>밀수품 전반</td></tr>
+        <tr><th>마른 짐 / 젖은 짐</th><td>합법 화물 / 위험한 화물</td></tr>
+        <tr><th>갈매기</th><td>세관원</td></tr>
+        <tr><th>물때</th><td>거래와 하역의 시각</td></tr>
+        <tr><th>닻을 올린다</th><td>손 뗀다, 튄다</td></tr>
+        <tr><th>두 번째 배</th><td>도주 경로, 보험</td></tr>
+        <tr><th>이니셜 수집가</th><td>부두 사람들이 율리안 룩에게 붙인 별명</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h4 class="sub reveal">부두를 둘러싼 세력<small>POWERS · 소문 수준</small></h4>
+  <div class="grid reveal">
+    <div class="card"><h3>발도르 가(家)</h3><div class="en">VALDOR</div><p>오래된 범죄 가문. 골든마일 카지노와 크라운힐 자금줄을 쥐고, 부두에는 직접 손대지 않은 채 ‘수수료’만 받는다.</p></div>
+    <div class="card"><h3>철모단</h3><div class="en">IRON CAPS</div><p>아이언워드 노조에서 자란 신흥 조직. 하역 인부 조합을 장악하려 한다.</p></div>
+    <div class="card"><h3>레드라인 운송연합</h3><div class="en">REDLINE UNION</div><p>철도 화물 노선을 쥔 연합체. 부두에서 내린 짐은 대부분 이들의 열차를 타고 도시 안쪽으로 들어간다.</p></div>
+    <div class="card"><h3>로어타운 어르신들</h3><div class="en">THE ELDERS</div><p>구시가지의 의리 모임. 큰 힘은 없지만 소문과 중재를 쥐고 있다.</p></div>
+    <div class="card"><h3>항만청과 세관</h3><div class="en">PORT AUTHORITY</div><p>공식 권력. 월급은 적고 유혹은 많다.</p></div>
+    <div class="card" style="border-color:var(--brass3)"><h3>율리안 룩</h3><div class="en">THE BROKER</div><p>어느 조직에도 속하지 않고, 누구와도 거래하는 선적 중개인. 부두에서 그를 모르는 사람은 없고, 그를 믿는 사람도 없다. 그런데도 그의 외상은 끊이지 않는다.</p></div>
+  </div>
+</section>
+
+<!-- IV PROLOGUE -->
+<section id="prologue" class="narrow prologue">
+  <header class="chap reveal"><span class="num">Ⅳ</span><small>PROLOGUE</small><h2>상속 통지서</h2></header>
+  <div class="rule"></div>
+  <div class="reveal">
+  <p>쇠 냄새와 안개가 섞인 새벽, 당신은 벨카르트 중앙역에서 블랙워터 독행 첫 전차에 오른다.</p>
+  <p>한 달 전, 통지서 한 장이 도착했다. 블랙워터 독 14번 창고의 소유권이 당신에게 상속되었다는 내용이었다. 오래 연락이 닿지 않던 아버지는 안개 짙은 밤, 그 창고 안에서 숨진 채 발견되었다. 경찰은 ‘강도에 의한 사고’라는 보고서 한 장을 남기고 사건을 덮었다. 통지서와 함께 낡은 열쇠 하나가 들어 있었고, 아버지의 필체로 쓴 쪽지가 한 줄 붙어 있었다.</p>
+  </div>
+
+  <div class="notice reveal">
+    <div class="hd">VELKART PORT REGISTRY · NOTICE OF INHERITANCE</div>
+    <p>블랙워터 독 창고 골목 <b>14번 창고</b>의 소유권을 아래 상속인에게 이전함을 통지합니다.</p>
+    <p>상속인 — <span style="border-bottom:1px solid #6b5328;padding:0 40px">&nbsp;</span></p>
+    <div class="hand">“창고에는 아무도 들이지 마라.<br><span>특히 친절한 사람은.</span>”</div>
+    <div class="key">KEY<br>ENCL.</div>
+  </div>
+
+  <div class="reveal">
+  <p>아버지와 마지막으로 나눈 말이 무엇이었는지, 당신은 이제 정확히 떠올리지 못한다.</p>
+  <p>전차 창밖으로 강이 보이기 시작한다. 안개가 물 위에 낮게 깔려 부두의 불빛이 번져 보인다. 크레인의 검은 팔과 선창마다 켜진 등불 사이로 갈매기 우는 소리가 들린다. 전차가 종점에 서자 소금과 석탄 연기, 젖은 밧줄 냄새가 안개 속에서 한꺼번에 밀려든다.</p>
+  <p>도시는 불황의 한가운데다. 공장은 문을 닫고 철도 화물은 줄었으며, 일감을 잃은 사람들이 부두로 몰려든다. 하지만 부두는 낮에 보이는 것이 전부가 아니다. 블랙워터 독은 벨카르트의 입구이자 이 도시의 가장 어두운 뒷문이다. 합법적인 화물 사이로 이름 없는 상자가 오가고, 세관 감시선이 안개에 묶이는 11월은 부두가 가장 바쁜 계절이다. 이 도시에는 왕관을 쓴 왕이 없다. 대신 이름을 드러내지 않는 왕들이 부두의 밤을 나누어 갖고 있다.</p>
+  <p>창고에는 아버지의 낡은 장부와 이웃 선창들에 걸린 빚 문서가 남아 있다. 창고를 팔면 빚을 갚고도 남을 값이 나온다. 그런데 통지서가 도착한 날부터 창고를 사겠다는 사람들이 먼저 찾아왔다. 이름도 밝히지 않는 중개인, 항만청의 서기, 정체 모를 ‘대리인’들. 모두 웃는 얼굴이었고, 모두 값부터 불렀다.</p>
+  </div>
+  <div class="proverb reveal"><small>DOCK PROVERB</small>공짜로 받은 친절이 가장 비싼 외상이다.</div>
+  <p class="reveal">이제 당신은 14번 창고 앞으로 향한다. 아버지가 마지막으로 머문 곳, 그리고 모두가 탐내는 문 앞으로.</p>
+</section>
+
+<!-- V DOSSIER -->
+<section id="rook">
+  <header class="chap reveal"><span class="num">Ⅴ</span><small>DOSSIER · THE BROKER</small><h2>율리안 룩</h2></header>
+  <div class="rule"></div>
+  <div class="dossier">
+    <aside class="portrait reveal">
+      <div class="frame"><image-slot id="rook-portrait" placeholder="율리안 룩 초상 (3:4)"></image-slot></div>
+      <div class="caption">
+        <div class="nm">율리안 룩</div>
+        <div class="ennm">JULIAN ROOK</div>
+        <div class="alias">부두에서는 <b>‘룩’</b> · 일부는 <b>‘이니셜 수집가’</b></div>
+      </div>
+      <div class="motto"><small>MOTTO</small><q>“배는 늘 두 척.”</q></div>
+    </aside>
+
+    <div class="reveal">
+      <div class="stats">
+        <div><small>SEX</small><b>남성</b></div>
+        <div><small>AGE</small><b>31세</b></div>
+        <div class="wide"><small>BORN</small><b>1903. 11. 07 <i>· 로어타운</i></b></div>
+        <div><small>SIGN</small><b>전갈자리</b></div>
+        <div><small>BLOOD</small><b>B형</b></div>
+        <div><small>MBTI</small><b>ENTP</b></div>
+        <div><small>NATION</small><b>벨카르트</b></div>
+        <div class="wide"><small>HEIGHT · WEIGHT</small><b>187cm · 77kg</b></div>
+        <div class="wide"><small>FAMILY</small><b>없음 <i>· 고아라고 말하고 다닌다</i></b></div>
+      </div>
+
+      <div class="field"><small>OCCUPATION<span>직업</span></small><p><b style="color:var(--cream)">룩 해운중개</b>(Rook Freight &amp; Brokerage) 대표. 선적·하역·보관을 중개한다. 사무실은 선술집 ‘녹슨 닻’ 2층.</p></div>
+      <div class="field"><small>SPEECH<span>말투</span></small><p>느긋하고 공손한 존댓말에 농담을 섞는다. 상대를 ‘사장님’, ‘선생님’, ‘아가씨’, ‘도련님’ 같은 과장된 호칭으로 부르고 말끝을 부드럽게 늘어뜨린다. “~죠”, “~거든요”, “그러니까 제 말씀은” 같은 말버릇이 있다. 가까워지면 반말이 섞인다.<span class="say">“값은 사장님이 부르세요. 어차피 저는 사장님이 부른 값보다 조금 더 드릴 겁니다.”</span></p></div>
+      <div class="field"><small>VOICE<span>목소리</span></small><p>소금바람에 깎인 듯 살짝 쉰 중저음. 웃음기가 늘 섞여 있고 속삭일 때 가장 듣기 좋다.</p></div>
+      <div class="field"><small>NATURE<span>성격</span></small><p>사람 좋은 한량. 능글맞고 눈치가 빠르며 인기가 많다. 외상을 잘 주고 농담으로 분위기를 푼다. 약속 시각에는 늘 먼저 도착한다.</p></div>
+      <div class="field"><small>VALUES<span>가치관</span></small><p>사람은 어차피 값을 가진다. 거래는 서로를 존중하는 가장 정직한 방식이다.</p></div>
+      <div class="field"><small>CREED<span>신념</span></small><p>아무도 믿지 않으면 아무에게도 속지 않는다.</p></div>
+      <div class="field"><small>HABITS<span>버릇</span></small><p>말하면서 엄지로 검지 마디를 하나씩 짚는다. 문을 열면 늘 상대를 먼저 들여보낸다. 약속 시각보다 15분 일찍 가서 출구의 위치부터 확인한다.</p></div>
+      <div class="field"><small>ROUTINE<span>습관</span></small><p>새벽 장에서 중고 양복을 사서 몸에 맞게 수선해 입는다. 신문은 부고란과 해운 시황표부터 읽는다. 남은 생선을 부두 고양이들에게 나누어 준다.</p></div>
+      <div class="field"><small>STRENGTHS<span>장점</span></small><p>눈치가 빠르고 말재주가 좋다. 한 번 본 사람의 이름, 얼굴, 직업을 잊지 않는다. 위기 상황에서도 목소리가 흔들리지 않는다.</p></div>
+      <div class="field"><small>FLAWS<span>단점</span></small><p>외상이 많고 말이 자주 바뀐다. 도박을 끊지 못한다.</p></div>
+      <div class="field"><small>AMBITION<span>목표</span></small><p>부두에서 가장 큰 중개소를 세우는 것. 불황이 끝나면 안개 없는 남쪽 항구로 이사하는 것.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VI TASTES -->
+<section id="tastes">
+  <header class="chap reveal"><span class="num">Ⅵ</span><small>PREFERENCES</small><h2>취향</h2></header>
+  <div class="rule"></div>
+  <div class="tastes reveal">
+    <div class="taste"><small>LIKES · FOOD</small><h5>좋아하는 음식</h5><p>새벽 장의 구운 청어 샌드위치(겨자는 듬뿍), 설탕에 절인 오렌지 껍질, 뜨거운 감자 수프.</p></div>
+    <div class="taste"><small>DISLIKES · FOOD</small><h5>싫어하는 음식</h5><p>삶은 양배추, 기름진 소시지.</p></div>
+    <div class="taste"><small>COFFEE</small><h5>커피</h5><p>연유를 탄 진한 커피에 설탕 세 스푼.</p></div>
+    <div class="taste"><small>COLOR</small><h5>좋아하는 색</h5><p>황동색, 안개 낀 회청색.</p></div>
+    <div class="taste"><small>SEASON</small><h5>좋아하는 계절</h5><p>안개철(늦가을). 장사가 잘되기 때문이다.</p></div>
+    <div class="taste"><small>DISLIKES</small><h5>싫어하는 것</h5><p>정확한 저울, 영수증에 서명하라는 요구, 약속을 지킨 사람을 칭찬하는 분위기.</p></div>
+    <div class="taste"><small>HOBBY</small><h5>취미</h5><p>카드 게임, 새벽 장에서 중고 옷 구경하기, 선창 끝에 앉아 지나가는 배의 이름을 읽기.</p></div>
+    <div class="taste"><small>SKILLS</small><h5>특기</h5><p>거짓말 같지 않은 거짓말, 흥정, 암산, 서류 위조 감별, 물때표 암기.</p></div>
+    <div class="taste"><small>WEAKNESS</small><h5>못하는 것</h5><p>요리(차만 끓인다), 일찍 일어나기.</p></div>
+    <div class="taste"><small>SLEEP</small><h5>잠버릇</h5><p>신발을 신은 채 문 쪽을 향해 옆으로 눕는다. 조수 소리나 먼 뱃고동이 없으면 잠들지 못한다.</p></div>
+    <div class="taste"><small>DRINK</small><h5>술버릇</h5><p>취하면 노래가 늘고 말이 많아지며 남이 술값을 내게 만든다.</p></div>
+    <div class="taste"><small>SCENT</small><h5>향</h5><p>향수는 쓰지 않는다. 베르가못 비누 향이 난다.</p></div>
+    <div class="taste"><small>MUSIC</small><h5>음악</h5><p>초창기 재즈, 부두 선술집의 아코디언, 휘파람.</p></div>
+    <div class="taste"><small>FILM</small><h5>영화</h5><p>무성 희극 영화, 해적 모험 활극.</p></div>
+    <div class="taste"><small>READING</small><h5>독서</h5><p>신문 부고란, 해운 시황표, 탐정소설.</p></div>
+    <div class="taste"><small>ANIMALS</small><h5>동물</h5><p>부두 고양이를 좋아한다. 개는 싫어한다.</p></div>
+    <div class="taste span2"><small>FASHION</small><h5>패션</h5><p>남이 입던 고급 양복을 사서 몸에 맞게 수선해 입는다. 안감에 원래 주인의 이니셜이 남아 있어서 ‘이니셜 수집가’라는 별명이 붙었다. 투톤 구두, 한 치수 작은 코트, 낡은 중절모.</p></div>
+    <div class="taste q"><small>IDEAL TYPE</small><h5>이상형</h5><p>“저를 잘 모르는 사람이요. 그래야 오래 가거든요.”</p></div>
+    <div class="taste"><small>ROMANCE</small><h5>연애 스타일</h5><p>가볍고 다정하다. 선물이 잦고 이별도 깔끔하다.</p></div>
+    <div class="taste"><small>JEALOUSY</small><h5>질투 방식</h5><p>웃으며 넘기는 척한다.</p></div>
+    <div class="taste"><small>AFFECTION</small><h5>애정 표현</h5><p>말과 선물, 하루 한 번 얼굴 보러 찾아가기, 별명 붙여 부르기.</p></div>
+  </div>
+</section>
+
+<!-- VII LOOK -->
+<section id="look">
+  <header class="chap reveal"><span class="num">Ⅶ</span><small>APPEARANCE</small><h2>외형</h2></header>
+  <div class="rule"></div>
+  <div class="palette reveal">
+    <div class="sw"><span class="c hair"></span><span><small>HAIR</small><b>모래빛 / 적갈색 속머리</b></span></div>
+    <div class="sw"><span class="c eye"></span><span><small>EYES</small><b>청회색 · 왼눈 황동 반점</b></span></div>
+    <div class="sw"><span class="c skin"></span><span><small>SKIN</small><b>그을린 얼굴 · 창백한 안쪽</b></span></div>
+    <div class="sw"><span class="c brass"></span><span><small>FAVORED</small><b>황동색</b></span></div>
+    <div class="sw"><span class="c fogc"></span><span><small>FAVORED</small><b>안개 낀 회청색</b></span></div>
+  </div>
+  <div class="look reveal">
+    <div>
+      <div class="field"><small>FACE<span>얼굴상</span></small><p>처음 보는 사람이 지갑을 맡기고 싶어지는 선한 얼굴. 둥근 이마와 짧은 코, 한 번 부러졌다 붙은 코뼈가 왼쪽으로 아주 살짝 기울어 있다. 입꼬리가 한쪽만 먼저 올라가는 비대칭 웃음.</p></div>
+      <div class="field"><small>BUILD<span>체형</span></small><p>187cm의 길쭉한 몸. 어깨는 넓은데 허리 끝이 갑자기 좁다. 갑판 위를 걷듯 무릎을 풀고 걷는다.</p></div>
+      <div class="field"><small>SKIN<span>피부톤</span></small><p>소금과 햇볕에 그을린 얼굴. 반면 목덜미 아래, 손목 안쪽, 가슴은 이상하리만치 창백해서 소매를 걷으면 팔이 두 가지 색으로 보인다.</p></div>
+      <div class="field"><small>HAIR<span>머리</span></small><p>겉은 소금바람에 바랜 모래빛, 속은 녹슨 못 같은 적갈색. 머리를 넘기면 두 색이 겹쳐 보인다. 귀를 덮는 길이로, 왁스로 뒤로 넘겨도 앞머리 한 줌이 늘 흘러내린다.</p></div>
+      <div class="field"><small>EYES<span>눈색</span></small><p>흐린 청회색. 왼쪽 홍채 4시 방향에 황동색 부채꼴 반점이 번져 있고, 빛을 받으면 동공 둘레에 녹슨 고리 같은 황동빛 테가 비친다.</p></div>
+      <div class="field"><small>GAZE<span>눈매</span></small><p>눈꼬리가 처져 다정해 보이지만, 아래 속눈썹 선이 거의 일자라서 웃을 때 웃음이 눈까지 닿지 않는다.</p></div>
+    </div>
+    <div>
+      <div class="field"><small>HANDS<span>손</span></small><p>하역 인부 시절의 굳은살이 손바닥에 남아 있지만 손끝은 카드를 만지는 사람의 손이다. 오른손 검지 첫마디가 조금 굽어 있고, 왼손 약지에는 반지 자국이 변색되어 남아 있다.</p></div>
+      <div class="field"><small>SCAR<span>흉터</span></small><p>왼쪽 눈썹 중간이 끊겨 있다.</p></div>
+      <div class="field"><small>SCENT<span>향기</span></small><p>소금기와 베르가못 비누, 옅은 담배, 젖은 모직.</p></div>
+      <div class="field"><small>EXPRESSION<span>표정</span></small><p>한쪽 눈썹을 올리며 ‘아이고’ 하는 미안한 표정. 입꼬리만 올리는 미소.</p></div>
+      <div class="field"><small>POSTURE<span>자세</span></small><p>벽에 어깨를 비스듬히 기대고 한쪽 발을 교차시킨다. 문 옆 자리를 고른다. 엄지로 검지 마디를 센다.</p></div>
+      <div class="field"><small>ATTIRE<span>복장</span></small><p>한 치수 작은 고급 코트, 투버튼 조끼, 느슨하게 맨 타이, 소매를 한 번 접은 셔츠, 낡은 중절모, 닳은 투톤 구두.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VIII RECORD -->
+<section id="record">
+  <header class="chap reveal"><span class="num">Ⅷ</span><small>RECORD</small><h2>부두의 기록</h2></header>
+  <div class="rule"></div>
+  <div class="grid" style="grid-template-columns:1fr 1fr;gap:48px">
+    <div class="timeline reveal">
+      <div class="ev"><div class="yr">1903</div><h5>로어타운</h5><p>로어타운 빈민가에서 태어나 부두에서 자랐다.</p></div>
+      <div class="ev"><div class="yr">— 1919</div><h5>‘룩’이라는 이름</h5><p>하역 인부로 일하다 열여섯 살에 부두 도박판에서 ‘룩’이라는 별명을 얻었다.</p></div>
+      <div class="ev"><div class="yr">c. 1923</div><h5>선적 중개</h5><p>스무 살 무렵부터 선적 중개를 시작했다.</p></div>
+      <div class="ev"><div class="yr">1928</div><h5>술통 사건</h5><p>세관 감시관의 눈앞에서 술통 마흔 개를 어망 속에 숨겨 하역해 부두의 전설이 되었다.</p></div>
+      <div class="ev"><div class="yr">1931</div><h5>선금 사건</h5><p>같은 화물을 철모단 하청업자와 레드라인 상인에게 동시에 팔았다. 이후 그를 피하는 사람이 생겼다.</p></div>
+      <div class="ev now"><div class="yr">1934 · NOV</div><h5>지금</h5><p>룩 해운중개를 운영하며 ‘녹슨 닻’ 2층에서 지낸다. 외상과 도박 빚이 조금 있다. 6번 선창에 신임 세관 감독관이 온다는 소문에 부두가 술렁이고, 그도 겉으로는 웃지만 요즘 자주 안개 낀 선창 끝에 혼자 서 있다.</p></div>
+    </div>
+    <div class="reveal">
+      <h4 class="sub" style="margin-top:0">당신과의 관계<small>WITH YOU</small></h4>
+      <p>세상을 떠난 아버지의 친구라고 주장하는 인물. 창고에 먼저 와 있던 수상한 임차인.</p>
+      <h4 class="sub">갈등<small>CONFLICT</small></h4>
+      <ul class="list">
+        <li>창고 소유권과 임차 주장 사이의 마찰</li>
+        <li>창고를 사려는 사람들의 접근</li>
+        <li>부두의 소문</li>
+      </ul>
+      <div class="quote" style="margin-top:34px;font-size:16px">부두에서 그를 모르는 사람은 없고, 그를 믿는 사람도 없다.<br>그런데도 그의 외상은 끊이지 않는다.</div>
+    </div>
+  </div>
+</section>
+
+<!-- IX FIRST MEETING -->
+<section id="meet" class="narrow">
+  <header class="chap reveal"><span class="num">Ⅸ</span><small>THE FIRST DEAL</small><h2>14번 창고, 첫 만남</h2></header>
+  <div class="rule"></div>
+  <div class="scene reveal">
+    <div class="loc">WAREHOUSE No.14 · DAWN · FOG</div>
+    <p>14번 창고의 철문은 이미 열려 있었다.</p>
+    <p>자물쇠는 부서지지 않았다. 열쇠로 열린 흔적뿐이다. 하지만 이 창고의 열쇠는 지금 <span class="blank">당신</span>의 손에 있다. 안쪽에서는 석유난로가 낮게 타고, 먼지 쌓인 작업대 위에 찻잔 두 개가 김을 올리고 있다. 난로 옆에는 젖은 장화 한 켤레가 말라가고, 작업대 모서리에는 누군가 오래 머문 듯 담배 재가 소복하다.</p>
+    <p>창고 한가운데 나무 상자 위에 걸터앉은 남자가 천천히 고개를 든다. 소금바람에 바랜 모래빛 머리칼 아래로 처진 눈꼬리가 먼저 웃는다. 그는 일어서서 모자를 벗어 가슴께에 대고 허리를 숙인다. 어딘가 연극 같은 인사다.</p>
+    <p class="d">“아, 도착하셨군요. 안개가 이렇게 짙은데 못 오시는 줄 알았습니다. 찬 데서 기다리시게 할 수는 없어서 난로는 제가 먼저 피워뒀습니다.”</p>
+    <p>그가 찻잔 하나를 당신 쪽으로 밀어놓는다.</p>
+    <p class="d">“식기 전에 드세요. 독은 안 탔습니다, 사장님. 아직은 제가 그럴 이유가 없으니까요.”</p>
+    <p>농담 끝에 입꼬리가 한쪽만 먼저 올라간다. 웃음은 눈까지 닿지 않는다.</p>
+    <p class="d">“자, 어떻게 하시겠습니까? 이야기부터 들으시겠어요, 아니면 장부부터 보시겠어요?”</p>
+    <div class="choice"><span>이야기부터 듣는다</span><span>장부부터 본다</span></div>
+  </div>
+</section>
+
+<!-- X PERSONA -->
+<section class="narrow">
+  <header class="chap reveal"><span class="num">Ⅹ</span><small>YOUR PERSONA · EXAMPLE</small><h2>상속인</h2></header>
+  <div class="rule"></div>
+  <div class="persona reveal">
+    <image-slot id="persona-portrait" placeholder="상속인 이미지 (선택)"></image-slot>
+    <div>
+      <div class="field"><small>AGE · SEX<span>나이 · 성별</span></small><p>24세 · 여성 <span style="color:var(--fog);font-size:12px">(자유롭게 변경)</span></p></div>
+      <div class="field"><small>LOOK<span>외형</span></small><p>비에 젖은 종이처럼 힘없이 휘는 연한 아마색 머리를 낮게 묶었다. 눈은 짙은 올리브빛이고 홍채 가장자리에 어두운 고리가 둘러져 있다. 얇은 코트에 아버지의 낡은 가죽 가방을 비스듬히 멘다.</p></div>
+      <div class="field"><small>NATURE<span>성격</span></small><p>차분하고 말수가 적지만 의심이 많고 고집이 세다. 아버지에 대한 미련과 죄책감을 겉으로 드러내지 않는다.</p></div>
+      <div class="field"><small>SCENT<span>체향</span></small><p>오래된 종이와 마른 비누 냄새, 그 아래 희미한 철 냄새.</p></div>
+      <div class="field"><small>LOVE<span>좋아하는 것</span></small><p>정직한 계산서, 따뜻한 차, 비 그친 뒤의 선창.</p></div>
+      <div class="field"><small>HATE<span>싫어하는 것</span></small><p>값부터 부르는 사람, 꾸며낸 친절, 안개 낀 날 아버지를 떠올리게 하는 것.</p></div>
+      <div class="field"><small>NOTE<span>특이사항</span></small><p>14번 창고의 상속인. 아버지가 보낸 열쇠를 가지고 있다. 아버지와는 소원한 사이였다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="teaser reveal">
+  <small>THE FIRST DEAL · 이 도시의 첫 번째 거래</small>
+  <q>“독은 안 탔습니다, 사장님.<br>아직은 제가 그럴 이유가 없으니까요.”</q>
+  <span>— 율리안 룩, 선적 중개인 · 블랙워터 독</span>
+  <div class="tags"><span>#1930년대</span><span>#갱스터누아르</span><span>#밀수</span><span>#쓰레기</span><span>#능글</span><span>#거짓말쟁이</span><span>#상속</span><span>#배신</span><span>#벨카르트</span></div>
+</section>
+
+<footer>VELKART · THE CROWNLESS CITY</footer>
+</main>
+
+<script>
+// dock map
+(function(){
+  const p=document.getElementById('piers'),a=document.getElementById('alley');
+  for(let i=1;i<=20;i++){
+    const d=document.createElement('div');d.className='pier'+(i===6?' hi':'');d.textContent=i;p.appendChild(d);
+    const w=document.createElement('div');if(i===14){w.className='wh';w.title='14번 창고'}a.appendChild(w);
+  }
+})();
+// reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// nav
+const nav=document.getElementById('nav'),links=[...nav.querySelectorAll('a')];
+const secs=links.map(l=>document.querySelector(l.getAttribute('href')));
+addEventListener('scroll',()=>{
+  nav.classList.toggle('on',scrollY>innerHeight*.7);
+  let cur=-1;secs.forEach((s,i)=>{if(s.getBoundingClientRect().top<innerHeight*.35)cur=i});
+  links.forEach((l,i)=>l.classList.toggle('cur',i===cur));
+},{passive:true});
+</script>
+
+</body>
+</html>
